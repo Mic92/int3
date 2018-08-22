@@ -3,6 +3,7 @@ import argparse
 from typing import List
 
 from .prebuild import prebuild_command
+from .cflags import cflags_command
 
 
 def parse_args(command: str, args: List[str]) -> argparse.Namespace:
@@ -12,6 +13,9 @@ def parse_args(command: str, args: List[str]) -> argparse.Namespace:
     prebuild_parser = subparsers.add_parser("prebuild")
     prebuild_parser.add_argument("sourcefile")
     prebuild_parser.set_defaults(func=prebuild_command)
+
+    cflags = subparsers.add_parser("cflags")
+    cflags.set_defaults(func=cflags_command)
 
     return parser.parse_args(args)
 
