@@ -4,6 +4,7 @@ from typing import List
 
 from .prebuild import prebuild_command
 from .cflags import cflags_command
+from .init import init_command
 
 
 def parse_args(command: str, args: List[str]) -> argparse.Namespace:
@@ -16,6 +17,9 @@ def parse_args(command: str, args: List[str]) -> argparse.Namespace:
 
     cflags = subparsers.add_parser("cflags")
     cflags.set_defaults(func=cflags_command)
+
+    init = subparsers.add_parser("init")
+    init.set_defaults(func=init_command)
 
     return parser.parse_args(args)
 
